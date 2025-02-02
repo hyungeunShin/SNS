@@ -1,0 +1,21 @@
+### 전체 글 조회
+GET http://localhost:8080/api/feeds
+
+### 사용자의 글 조회
+GET http://localhost:8080/api/feeds/user/1
+
+### 단건 조회
+GET http://localhost:8080/api/feeds/2
+
+### 글 등록
+POST http://localhost:8080/api/feeds
+Content-Type: application/json
+
+{
+  "imageId": "test-001",
+  "uploaderId": 1,
+  "contents": "Test Posting"
+}
+
+### 글 삭제
+DELETE http://localhost:8080/api/feeds/1
