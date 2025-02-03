@@ -12,7 +12,7 @@ POST http://localhost:8080/api/feeds
 Content-Type: application/json
 
 {
-  "imageId": "test-001",
+  "imageId": "test-003",
   "uploaderId": 1,
   "contents": "Test Posting"
 }

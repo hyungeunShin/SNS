@@ -1,12 +1,14 @@
 package com.example.feedserver.service;
 
 import com.example.feedserver.domain.SocialFeed;
+import com.example.feedserver.dto.UserResponse;
 import com.example.feedserver.repository.SocialFeedRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestClient;
 
-import java.time.ZonedDateTime;
 import java.util.List;
 
 @Service
@@ -14,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SocialFeedService {
     private final SocialFeedRepository repository;
+    private final RestClient restClient = RestClient.create();
 
     public List<SocialFeed> getAllFeeds() {
         return repository.findAll();
@@ -35,5 +38,15 @@ public class SocialFeedService {
     @Transactional
     public void deleteFeed(Long feedId) {
         repository.deleteById(feedId);
+    }
+
+    public UserResponse getUser(Long userId) {
+        return restClient.get()
+                         .uri("http://localhost:8081/api/users/" + userId)
+                         .retrieve()
+                         .onStatus(HttpStatusCode::isError, (request, response) -> {
+                             throw new RuntimeException("invalid server response " + response.getStatusText());
+                         })
+                         .body(UserResponse.class);
     }
 }

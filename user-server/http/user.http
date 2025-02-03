@@ -1,21 +1,21 @@
 ### 회원가입
-POST http://localhost:8080/api/users
+POST http://localhost:8081/api/users
 Content-Type: application/json
 
 {
-  "username": "aaa111",
-  "email": "aaa111@naver.com",
+  "username": "이길동",
+  "email": "gusrms722@naver.com",
   "plainPassword": "1234"
 }
 
 ### pk로 조회
-GET http://localhost:8080/api/users/1
+GET http://localhost:8081/api/users/1
 
 ### 아이디로 조회
-GET http://localhost:8080/api/users/username/aaa111
+GET http://localhost:8081/api/users/username/aaa111
 
 ### 로그인
-POST http://localhost:8080/api/users/signIn
+POST http://localhost:8081/api/users/signIn
 Content-Type: application/json
 
 {

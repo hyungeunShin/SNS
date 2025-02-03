@@ -1,0 +1,12 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+image:
+  upload:
+    path: C:/test
+
+server:
+  port: 8082
