@@ -1,0 +1,8 @@
+###
+GET http://localhost:8084/api/timeline
+
+### 내 글
+GET http://localhost:8084/api/timeline/2?followingFeed=false&randomPost=1
+
+### 좋아요
+GET http://localhost:8084/api/timeline/like/2/3

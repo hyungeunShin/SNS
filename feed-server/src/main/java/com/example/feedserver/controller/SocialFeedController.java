@@ -25,6 +25,12 @@ public class SocialFeedController {
                       .toList();
     }
 
+    @GetMapping("/refresh")
+    public ResponseEntity<?> refresh() {
+        service.refreshAllFeeds();
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping("/user/{userId}")
     public List<SocialFeedResponse> getAllFeedsByUser(@PathVariable("userId") Long userId) {
         return service.getAllFeedsByUploaderId(userId)

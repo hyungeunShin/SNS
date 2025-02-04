@@ -1,2 +1,2 @@
 rootProject.name = 'sns'
-include("feed-server", "user-server", "image-server", "notification-batch")
+include("feed-server", "user-server", "image-server", "notification-batch", "timeline-server")

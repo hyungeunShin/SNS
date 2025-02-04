@@ -19,3 +19,6 @@ Content-Type: application/json
 
 ### 글 삭제
 DELETE http://localhost:8080/api/feeds/1
+
+### 글 갱신
+GET http://localhost:8080/api/feeds/refresh
