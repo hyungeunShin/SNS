@@ -1,22 +1,22 @@
-create table post(
-    post_id         bigint auto_increment 			   primary key,
-    image_id        varchar(255)                       not null,
-    uploader_id     bigint                             not null,
-    upload_datetime datetime default CURRENT_TIMESTAMP null,
-    contents        text                               null
+CREATE TABLE POST(
+    POST_ID         BIGINT AUTO_INCREMENT 			   PRIMARY KEY,
+    IMAGE_ID        VARCHAR(255)                       NOT NULL,
+    UPLOADER_ID     BIGINT                             NOT NULL,
+    UPLOAD_DATETIME DATETIME DEFAULT CURRENT_TIMESTAMP NULL,
+    CONTENTS        TEXT                               NULL
 );
 
-create table user(
-    user_id  bigint auto_increment primary key,
-    username varchar(255)          not null,
-    email    varchar(255)          not null,
-    password varchar(255)          not null
+CREATE TABLE USER(
+    USER_ID  BIGINT AUTO_INCREMENT PRIMARY KEY,
+    USERNAME VARCHAR(255)          NOT NULL,
+    EMAIL    VARCHAR(255)          NOT NULL,
+    PASSWORD VARCHAR(255)          NOT NULL
 );
 
-create table follow(
-    follow_id          bigint auto_increment              primary key,
-    user_id            bigint                             not null,
-    follower_id        bigint                             not null,
-    follow_datetime    datetime default CURRENT_TIMESTAMP null,
-    mail_sent_datetime datetime default null
+CREATE TABLE FOLLOW(
+    FOLLOW_ID          BIGINT AUTO_INCREMENT              PRIMARY KEY,
+    USER_ID            BIGINT                             NOT NULL,
+    FOLLOWER_ID        BIGINT                             NOT NULL,
+    FOLLOW_DATETIME    DATETIME DEFAULT CURRENT_TIMESTAMP NULL,
+    MAIL_SENT_DATETIME DATETIME DEFAULT NULL
 );

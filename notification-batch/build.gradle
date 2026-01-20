@@ -2,7 +2,3 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-batch'
     implementation 'org.springframework.boot:spring-boot-starter-mail'
 }
-
-tasks.named('test') {
-    useJUnitPlatform()
-}

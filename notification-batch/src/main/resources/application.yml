@@ -1,4 +1,11 @@
+server:
+  port: 8083
+
 spring:
+  output:
+    ansi:
+      enabled: always
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sns?useUnicode=yes&characterEncoding=UTF-8&rewriteBatchedStatements=true
@@ -28,6 +35,3 @@ spring:
         smtp:
           auth: true
           starttls.enable: true
-
-server:
-  port: 8083

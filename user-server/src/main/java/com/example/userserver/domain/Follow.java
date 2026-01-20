@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
 
+@Getter
 @Entity
 @Table
-@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Follow {
     @Id

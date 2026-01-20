@@ -21,8 +21,7 @@ public class UserService {
             throw new RuntimeException("Username duplicated");
         }
 
-        String hashedPassword = encoder.encode(plainPassword);
-        return repository.save(new User(username, email, hashedPassword));
+        return repository.save(new User(username, email, encoder.encode(plainPassword)));
     }
 
     public User getUser(Long userId) {

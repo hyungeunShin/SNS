@@ -3,8 +3,8 @@ POST http://localhost:8081/api/users
 Content-Type: application/json
 
 {
-  "username": "이길동",
-  "email": "gusrms722@naver.com",
+  "username": "aaa111",
+  "email": "aaa@naver.com",
   "plainPassword": "1234"
 }
 

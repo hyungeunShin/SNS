@@ -30,6 +30,24 @@ public class NotificationBatch {
     private String email;
 
     @Bean
+    public Job notificationJob(Step notificationStep, JobRepository jobRepository) {
+        return new JobBuilder("mail-send-job", jobRepository)
+                .incrementer(new RunIdIncrementer())
+                .start(notificationStep)
+                .build();
+    }
+
+    @Bean
+    public Step notificationStep(JobRepository jobRepository, PlatformTransactionManager transactionManager,
+                                 ItemReader<NotificationInfo> itemReader, ItemWriter<NotificationInfo> itemWriter) {
+        return new StepBuilder("mail-send-step", jobRepository)
+                .<NotificationInfo, NotificationInfo>chunk(10, transactionManager)
+                .reader(itemReader)
+                .writer(itemWriter)
+                .build();
+    }
+
+    @Bean
     public JdbcCursorItemReader<NotificationInfo> reader(DataSource dataSource) {
         return new JdbcCursorItemReaderBuilder<NotificationInfo>()
                 .name("followerReader")
@@ -64,22 +82,5 @@ public class NotificationBatch {
                 jdbcTemplate.update("UPDATE follow SET mail_sent_datetime = ? WHERE follow_id = ?", ZonedDateTime.now(), item.getFollowId());
             }
         };
-    }
-
-    @Bean
-    public Step notificationStep(JobRepository jobRepository, PlatformTransactionManager transactionManager,
-                                 ItemReader<NotificationInfo> itemReader, ItemWriter<NotificationInfo> itemWriter) {
-        return new StepBuilder("mail-send-step", jobRepository).<NotificationInfo, NotificationInfo>chunk(10, transactionManager)
-                .reader(itemReader)
-                .writer(itemWriter)
-                .build();
-    }
-
-    @Bean
-    public Job notificationJob(Step notificationStep, JobRepository jobRepository) {
-        return new JobBuilder("mail-send-job", jobRepository)
-                .incrementer(new RunIdIncrementer())
-                .start(notificationStep)
-                .build();
     }
 }

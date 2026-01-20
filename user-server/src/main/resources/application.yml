@@ -1,4 +1,11 @@
+server:
+  port: 8081
+
 spring:
+  output:
+    ansi:
+      enabled: always
+
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/sns?useUnicode=yes&characterEncoding=UTF-8&rewriteBatchedStatements=true
@@ -18,6 +25,3 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
-server:
-  port: 8081

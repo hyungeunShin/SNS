@@ -1,4 +1,11 @@
+server:
+  port: 8082
+
 spring:
+  output:
+    ansi:
+      enabled: always
+
   servlet:
     multipart:
       max-file-size: 100MB
@@ -7,6 +14,3 @@ spring:
 image:
   upload:
     path: C:/test
-
-server:
-  port: 8082
