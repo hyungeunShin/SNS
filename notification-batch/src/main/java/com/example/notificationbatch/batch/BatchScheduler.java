@@ -27,10 +27,10 @@ public class BatchScheduler {
                     .toJobParameters();
             JobExecution execution = jobLauncher.run(notificationJob, jobParameters);
 
-//            log.info("Batch job 실행됨. 상태 : {}", execution.getStatus());
-//            for(StepExecution stepExecution : execution.getStepExecutions()) {
-//                log.info("Step: {} | 처리된 건수: {}", stepExecution.getStepName(), stepExecution.getReadCount());
-//            }
+            log.info("Batch job 실행됨. 상태 : {}", execution.getStatus());
+            for(StepExecution stepExecution : execution.getStepExecutions()) {
+                log.info("Step: {} | 처리된 건수: {}", stepExecution.getStepName(), stepExecution.getReadCount());
+            }
         } catch(JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException | JobParametersInvalidException e) {
             throw new RuntimeException(e);
         }

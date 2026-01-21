@@ -9,7 +9,6 @@ import java.time.ZonedDateTime;
 
 @Getter
 @Entity
-@Table
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Follow {
     @Id

@@ -5,14 +5,14 @@ GET http://localhost:8080/api/feeds
 GET http://localhost:8080/api/feeds/user/1
 
 ### 단건 조회
-GET http://localhost:8080/api/feeds/2
+GET http://localhost:8080/api/feeds/1
 
 ### 글 등록
 POST http://localhost:8080/api/feeds
 Content-Type: application/json
 
 {
-  "imageId": "test-003",
+  "imageId": "test-001",
   "uploaderId": 1,
   "contents": "Test Posting"
 }

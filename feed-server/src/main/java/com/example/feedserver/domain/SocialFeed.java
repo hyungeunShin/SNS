@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
 
-@Entity
-@Table
 @Getter
+@Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SocialFeed {
     @Id

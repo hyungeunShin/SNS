@@ -14,7 +14,6 @@ import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuild
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -30,7 +29,7 @@ public class NotificationBatch {
     private String email;
 
     @Bean
-    public Job notificationJob(Step notificationStep, JobRepository jobRepository) {
+    public Job notificationJob(JobRepository jobRepository, Step notificationStep) {
         return new JobBuilder("mail-send-job", jobRepository)
                 .incrementer(new RunIdIncrementer())
                 .start(notificationStep)
@@ -59,7 +58,7 @@ public class NotificationBatch {
                                         JOIN user u2 ON(f.follower_id = u2.user_id)
                          WHERE f.mail_sent_datetime is null;
                 """)
-                .rowMapper(new BeanPropertyRowMapper<>(NotificationInfo.class))
+                .beanRowMapper(NotificationInfo.class)
                 .build();
     }
 

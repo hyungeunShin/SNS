@@ -1,4 +1,4 @@
-CREATE TABLE POST(
+CREATE TABLE post(
     POST_ID         BIGINT AUTO_INCREMENT 			   PRIMARY KEY,
     IMAGE_ID        VARCHAR(255)                       NOT NULL,
     UPLOADER_ID     BIGINT                             NOT NULL,
@@ -6,14 +6,14 @@ CREATE TABLE POST(
     CONTENTS        TEXT                               NULL
 );
 
-CREATE TABLE USER(
+CREATE TABLE user(
     USER_ID  BIGINT AUTO_INCREMENT PRIMARY KEY,
     USERNAME VARCHAR(255)          NOT NULL,
     EMAIL    VARCHAR(255)          NOT NULL,
     PASSWORD VARCHAR(255)          NOT NULL
 );
 
-CREATE TABLE FOLLOW(
+CREATE TABLE follow(
     FOLLOW_ID          BIGINT AUTO_INCREMENT              PRIMARY KEY,
     USER_ID            BIGINT                             NOT NULL,
     FOLLOWER_ID        BIGINT                             NOT NULL,
