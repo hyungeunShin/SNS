@@ -16,6 +16,7 @@ import java.io.IOException;
 public class ImageController {
     private final ImageService service;
 
+    //미리보기 기능용도
     @PostMapping("/upload")
     public ResponseEntity<String> uploadImage(@RequestParam("image") MultipartFile file) {
         try {
@@ -26,6 +27,7 @@ public class ImageController {
         }
     }
 
+    //미리보기 기능용도
     @GetMapping("/view/{imageId}")
     public ResponseEntity<Resource> getImage(@PathVariable("imageId") String imageId, @RequestParam(value = "thumbnail", defaultValue = "false") Boolean isThumbnail) {
         Resource image = service.get(imageId, isThumbnail);
